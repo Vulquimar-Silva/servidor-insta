@@ -1,0 +1,21 @@
+{
+  "name": "instaclone",
+  "version": "0.0.1",
+  "description": "servidor instaclone",
+  "main": "index.js",
+  "author": "Vulquimar Silva",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "mongoose": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
