@@ -1,1 +1,1 @@
-mongodb+srv://vulquimarfdsj:wdDsr7veBAxqg0lV@instaclone.jrmk4ia.mongodb.net/instaclone
+## API Instaclone - Node.js, GraphQL, MongoDB e AWS

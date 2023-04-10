@@ -23,11 +23,11 @@ async function register(input) {
 
   // Revisando se o email está em uso
   const foundEmail = await User.findOne({ email });
-  if (foundEmail) throw new Error("This email is already in use.")
+  if (foundEmail) throw new Error("Esse email já está em uso.")
 
   // Revisando se o username está em uso
   const foundUsername = await User.findOne({ username });
-  if (foundUsername) throw new Error("This username is already in use.")
+  if (foundUsername) throw new Error("Esse username já está em uso.")
 
   // Encriptar
   const salt = await bcrypt.genSaltSync(10)
@@ -51,16 +51,24 @@ async function login(input) {
   if (!userFound) throw new Error("Invalid email or password.");
 
   const validatingPassword = await bcrypt.compareSync(password, userFound.password);
-  if (!validatingPassword) throw new Error("Invalid email or password.");
-
-  console.log()
+  if (!validatingPassword) throw new Error("Senha ou email inválido.");
 
   return {
     token: createToken(userFound, process.env.SECRET_KEY, "24h")
   }
 }
 
+async function getUser(id, username) {
+  let user = null;
+  if(id) user = await User.findById(id);
+  if(username) user = await User.findOne({ username });
+  if(!user) throw new Error("Esse usuário não existe.")
+
+  return user;
+}
+
 module.exports = {
   register,
-  login
+  login,
+  getUser,
 }
